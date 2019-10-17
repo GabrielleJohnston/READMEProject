@@ -2,7 +2,7 @@
 [data, fs] = audioread('IR19061314201696-1.wav');
 info = audioinfo('IR19061314201696-1.wav');
 NoSamples = info.TotalSamples;
-fc = 10000; % cutoff frequency
+fc = 20000; % cutoff frequency
 
 %% Filter and display data 
 framelen = 29; % window size
@@ -53,7 +53,7 @@ xlabel('Frequency (Hz)')
 ylabel('Difference between smoothed and original magnitudes (dB)')
 
 %% Time elapsed to plot vs window size 
-framelen_range = 27:4:731; % range of window size
+framelen_range = 27:2:407; % range of window size
 % max displayed window for fc = 10000 is 731
 % max displayed window for fc = 20000 is 407?
 
@@ -74,7 +74,21 @@ for i = 1:length(framelen_range)
     elapsedTimeAvg(i) = mean(elapsedTime);
 end
 
+elapsedTimeNoSmooth = zeros(N, 1);
+
+[freq, mag] = getmag(data, fs, NoSamples);
+for n = 1:N
+    tic;
+    semilogx(freq, mag)
+    xlim([10 40000])
+    grid on
+    elapsedTimeNoSmooth(n) = toc;
+end
+elapsedTimeNoSmoothAverage(1:length(framelen_range)) = mean(elapsedTimeNoSmooth);
+
 figure(3)
-plot(framelen_range, elapsedTimeAvg)
+plot(framelen_range, elapsedTimeAvg, 'b')
+hold on
+plot(framelen_range, elapsedTimeNoSmoothAverage, 'k')
 xlabel('Window length')
 ylabel('Time taken to display plot (s)')
