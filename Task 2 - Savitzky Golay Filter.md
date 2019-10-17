@@ -25,14 +25,14 @@ Functions:
 
 ## Smoothing results
 The magnitude spectrum of the signals smoothed with cutoff frequencies of 10 kHz and 20 kHz are shown below. The window length, which is discussed further below, is 127.
-![](https://github.com/GabrielleJohnston/READMEProject/blob/SG_Gabby/sg_magnitude_spectrum_10-20kHz_127.png)
+![](https://github.com/GabrielleJohnston/READMEProject/blob/SG_Gabby_Megan/sg_magnitude_spectrum_10-20kHz_127.png)
 
 ### Time taken to plot smoothed curve versus unsmoothed curve
 At 10 kHz cutoff frequency:
-![](https://github.com/GabrielleJohnston/READMEProject/blob/SG_Gabby/timetakenvswindowlength_sg_10kHz_N20_withnosmooth.png)
+![](https://github.com/GabrielleJohnston/READMEProject/blob/SG_Gabby_Megan/timetakenvswindowlength_sg_10kHz_N20_withnosmooth.png)
 
 At 20 kHz cutoff frequency:
-![](https://github.com/GabrielleJohnston/READMEProject/blob/SG_Gabby/timetakenvswindowlength_sg_20kHz_N20_withnosmooth.png)
+![](https://github.com/GabrielleJohnston/READMEProject/blob/SG_Gabby_Megan/timetakenvswindowlength_sg_20kHz_N20_withnosmooth.png)
 
 It can thus be seen that although variable, the time taken to plot the smoothed curve is less than the time taken to plot the unsmoothed curve until the window length is increased past approximately 325. The reduction in time is unfortunately very minimal.
 
@@ -45,17 +45,17 @@ For a given frequency cutoff value, the window length was varied and the results
 
 #### Time
 The graph below shows the average time taken to plot the graph vs window length for three different runs of the program, demonstrating that with the exception of outliers, the length of the window does not non-neglibly affect the time taken to plot the graph.
-![](https://github.com/GabrielleJohnston/READMEProject/blob/SG_Gabby/timetakenvswindowlength_sg_20kHz_N20_comb.png)
+![](https://github.com/GabrielleJohnston/READMEProject/blob/SG_Gabby_Megan/timetakenvswindowlength_sg_20kHz_N20_comb.png)
 
 #### Magnitude difference
 In the graph below for a 10 kHz cutoff frequency, a window length of 227 appeared to yield the highest performance, followed by the window length of 127. In this case high performance is judged based on sharpness of the envelope of the curve when attenuation begins and the value of attenuation of the envelope, where sharper envelopes and lower values are considered "higher performance".
 
-![](https://github.com/GabrielleJohnston/READMEProject/blob/SG_Gabby/differenceinmagnitude_sg_10kHz.png)
+![](https://github.com/GabrielleJohnston/READMEProject/blob/SG_Gabby_Megan/differenceinmagnitude_sg_10kHz.png)
 
 In the graph below for a 20 kHz cutoff frequency, the window length of 127 followed by the window length of 227 appeared to yield the highest performance.
 
 
-![](https://github.com/GabrielleJohnston/READMEProject/blob/SG_Gabby/differenceinmagnitude_sg_20kHz.png)
+![](https://github.com/GabrielleJohnston/READMEProject/blob/SG_Gabby_Megan/differenceinmagnitude_sg_20kHz.png)
 
 ## Sources
 
