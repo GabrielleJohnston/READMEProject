@@ -57,4 +57,5 @@ In the graph below for a 20 kHz cutoff frequency, the window length of 127 follo
 ## Sources
 
 https://www.ece.rutgers.edu/~orfanidi/intro2sp/orfanidis-i2sp.pdf
+
 https://c.mql5.com/forextsd/forum/147/sgfilter.pdf
