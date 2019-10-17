@@ -24,6 +24,9 @@ Functions:
   * This relation is most accurate when the window length is greater or equal to 50
 
 ## Smoothing results
+The magnitude spectrum of the signals smoothed with cutoff frequencies of 10 kHz and 20 kHz are shown below. The window length, which is discussed further below, is 127.
+![](https://github.com/GabrielleJohnston/READMEProject/blob/SG_Gabby/sg_magnitude_spectrum_10-20kHz_127.png)
+
 ### Time taken to plot comparison with unsmoothed plot
 At 10 kHz cutoff frequency:
 ![](https://github.com/GabrielleJohnston/READMEProject/blob/SG_Gabby/timetakenvswindowlength_sg_10kHz_N20_withnosmooth.png)
