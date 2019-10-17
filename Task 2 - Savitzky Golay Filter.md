@@ -25,10 +25,10 @@ Functions:
 
 ## Smoothing results
 ### Time taken to plot comparison with unsmoothed plot
-At 10 kHz:
+At 10 kHz cutoff frequency:
 ![](https://github.com/GabrielleJohnston/READMEProject/blob/SG_Gabby/timetakenvswindowlength_sg_10kHz_N20_withnosmooth.png)
 
-At 20 kHz:
+At 20 kHz cutoff frequency:
 ![](https://github.com/GabrielleJohnston/READMEProject/blob/SG_Gabby/timetakenvswindowlength_sg_20kHz_N20_withnosmooth.png)
 
 It can thus be seen that although variable, the time taken to plot the smoothed curve is less than the time taken to plot the unsmoothed curve until the window length is increased past approximately 325. The reduction in time is unfortunately very minimal.
