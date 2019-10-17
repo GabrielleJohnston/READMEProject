@@ -1,10 +1,3 @@
----
-tags: [Uni/Third year project]
-title: Task 2 - Savitzky Golay Filter
-created: '2019-10-17T16:05:56.967Z'
-modified: '2019-10-17T17:22:28.606Z'
----
-
 # Task 2 - Savitzky Golay Filter
 
 Matlab code: 
