@@ -34,14 +34,15 @@ For a given frequency cutoff value, the window length was varied and the results
 
 #### Time
 The graph below shows the average time taken to plot the graph vs window length for three different runs of the program, demonstrating that with the exception of outliers, the length of the window does not non-neglibly affect the time taken to plot the graph.
-![](https://github.com/GabrielleJohnston/READMEProject/blob/SG_Gabby/differenceinmagnitude_sg_20kHz.png)
+![](https://github.com/GabrielleJohnston/READMEProject/blob/SG_Gabby/timetakenvswindowlength_sg_20kHz_N20_comb.png)
 
 #### Magnitude difference
 In the graph below for a 10 kHz cutoff frequency, a window length of 227 appeared to yield the highest performance, followed by the window length of 127. In this case high performance is judged based on sharpness of the envelope of the curve when attenuation begins and the value of attenuation of the envelope, where sharper envelopes and lower values are considered "higher performance".
 
-![](@attachment/third_year_project/differenceinmagnitude_sg_10kHz.png)
+![](https://github.com/GabrielleJohnston/READMEProject/blob/SG_Gabby/differenceinmagnitude_sg_10kHz.png)
 
 In the graph below for a 20 kHz cutoff frequency, the window length of 127 followed by the window length of 227 appeared to yield the highest performance.
 
 
-![](@attachment/third_year_project/differenceinmagnitude_sg_20kHz.png)
+![](https://github.com/GabrielleJohnston/READMEProject/blob/SG_Gabby/differenceinmagnitude_sg_20kHz.png)
+
