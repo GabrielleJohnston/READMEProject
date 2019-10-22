@@ -43,9 +43,13 @@ The relation between the normalised frequency, the order, and the window length 
 
 For a given frequency cutoff value, the window length was varied and the results observed. 
 
-#### Time
+#### Time to plot
 The graph below shows the average time taken to plot the graph vs window length for three different runs of the program, demonstrating that with the exception of outliers, the length of the window does not non-neglibly affect the time taken to plot the graph.
 ![](https://github.com/GabrielleJohnston/READMEProject/blob/SG_Gabby_Megan/timetakenvswindowlength_sg_20kHz_N20_comb.png)
+
+#### Time to filter
+The graph below shows the average time taken to perform the filter vs window length, showing a linear relationship between window length and time taken, and showing that time taken to filter is independent of cutoff frequency, and consequentially, order.
+![](https://github.com/GabrielleJohnston/READMEProject/blob/SG_Gabby_Megan/timetakenfiltervswindowlengthbothfreq.png)
 
 #### Magnitude difference
 In the graph below for a 10 kHz cutoff frequency, a window length of 227 appeared to yield the highest performance, followed by the window length of 127. In this case high performance is judged based on sharpness of the envelope of the curve when attenuation begins and the value of attenuation of the envelope, where sharper envelopes and lower values are considered "higher performance".
