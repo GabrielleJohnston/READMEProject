@@ -5,7 +5,7 @@ NoSamples = info.TotalSamples;
 fc = 20000; % cutoff frequency
 
 %% Filter and display data 
-framelen = 29; % window size
+framelen = 127; % window size
 [data_sgf, order_sgf] = savitzkyGolayFilter(data, fs, fc, framelen);
 [freq_sgf, mag_sgf] = getmag(data_sgf, fs, NoSamples);
 figure (1)
@@ -92,3 +92,26 @@ hold on
 plot(framelen_range, elapsedTimeNoSmoothAverage, 'k')
 xlabel('Window length')
 ylabel('Time taken to display plot (s)')
+
+%% Time elapsed to filter vs window size 
+framelen_range = 27:4:407; % range of window size
+% max displayed window for fc = 10000 is 731
+% max displayed window for fc = 19999 is 407?
+
+N = 20; % number of times to average time taken over 
+elapsedTimeAvg = zeros(length(framelen_range), 1);
+order = zeros(length(framelen_range), 1);
+for i = 1:length(framelen_range)
+    elapsedTime = zeros(N, 1);
+    for n = 1:N
+        tic;
+        [data_sgf, order(i)] = savitzkyGolayFilter(data, fs, fc, framelen_range(i));
+        elapsedTime(n) = toc;
+    end
+    elapsedTimeAvg(i) = mean(elapsedTime);
+end
+
+figure(4)
+plot(framelen_range, elapsedTimeAvg)
+xlabel('Window length')
+ylabel('Time taken to filter (s)')
