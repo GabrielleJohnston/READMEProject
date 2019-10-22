@@ -13,8 +13,8 @@ Mag = 20*log10(abs(Y));
 figure;
 
 plot(freq ,Mag,'r');
-xlabel('frequency');
-ylabel('magnitude');
+xlabel('frequency(Hz)');
+ylabel('magnitude(dB)');
 xlim([10 100000])
 ylim([-100 50]);
 set(gca, 'XScale', 'log');
@@ -22,13 +22,14 @@ set(gca, 'YScale', 'linear');
 %=================================================================
 %% plot smoothed version
 hold on;
-s = fastsmooth(YY, 5, 2, 0); %a function from Mathwork
+s = fastsmooth(Mag, 10, 2); %a function from Mathwork
 %figure(2);
-plot(f,s,'b');
+plot(freq,s,'b');
 legend('Original','Smooth');
+title('Frequency response of data');
 %% plot smooth (Alex)
 hold on;
 
-s = Trig_Smooth(YY, 5); %a function from Mathwork
-plot(f,s,'b');
+s = Trig_Smooth(Mag, 5); %a function from Mathwork
+plot(freq,s,'b');
 legend('Original','Smooth');
