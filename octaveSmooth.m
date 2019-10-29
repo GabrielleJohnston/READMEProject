@@ -9,6 +9,7 @@ plot(time_ax, y);
 xlabel('Time (s)')
 title(['Unsmoothed signal'])
 ylabel('Amplitude IR (Arbitrary Units)')
+xlim([4.5, 6])
 
 %Generating the third octave filter bank values
 %center values
@@ -41,7 +42,7 @@ xlabel('Frequency(Hz)')
 title(['Unsmoothed signal'])
 ylabel('Amplitude IR (dB)')
 set(gca, 'XScale', 'log')
-xlim([0, 10000])
+xlim([10, 20000])
 
 %   Filtering the signal - only for center values
 for i=1:33%2:66
@@ -58,4 +59,5 @@ xlabel('Frequency(Hz)')
 title(['Smoothed signal'])
 ylabel('Amplitude IR (dB)')
 set(gca, 'XScale', 'log')
-xlim([0, 10000])
+xlim([10, 20000])
+ylim([-100, 100])
