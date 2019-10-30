@@ -3,7 +3,7 @@ clear all, close all, clc
 L = length(y);
 time_ax = [0:L-1]./fs;
 
-%   Plotting the signal in time domain
+% %   Plotting the signal in time domain
 figure(1)
 plot(time_ax, y);
 xlabel('Time (s)')
@@ -41,6 +41,7 @@ plot(f, amp);
 xlabel('Frequency(Hz)')
 title(['Unsmoothed signal'])
 ylabel('Amplitude IR (dB)')
+grid on
 set(gca, 'XScale', 'log')
 xlim([10, 20000])
 
@@ -59,5 +60,48 @@ xlabel('Frequency(Hz)')
 title(['Smoothed signal'])
 ylabel('Amplitude IR (dB)')
 set(gca, 'XScale', 'log')
+grid on
 xlim([10, 20000])
 ylim([-100, 100])
+
+%   Determining the flatness of the curve
+% filt_sig_flat = filt_sig(1:find(center==8000)); %for smoothed points until 8kHz
+% center = center(1:find(center==8000));
+% mdl = fitlm(center, filt_sig_flat);
+mdl = fitlm(center, filt_sig);          %for all of the smoothed points
+
+%Plotting the Linear Regression Model
+figure(3)
+subplot(2,1,1)
+plot(mdl);
+xlabel('Frequency(Hz)')
+title(['Linear Regression Model for Smoothed Data'])
+ylabel('Amplitude IR (dB)')
+set(gca, 'XScale', 'log')
+grid on
+xlim([10, 20000])
+ylim([-100, 100])
+
+%   Centering the linear fit at 0dB
+slope = mdl.Coefficients.Estimate(2);
+mdl_eq_0db = center.*slope;
+
+%   Centering the smoothed curve at 0dB (substracting y-intercept of linear model)
+y_intercept = mdl.Coefficients.Estimate(1);
+filt_sig_0db = filt_sig - y_intercept;
+
+subplot(2,1,2)
+hold on
+plot(center,mdl_eq_0db) 
+tic
+plot(center,filt_sig_0db);
+elapse = toc
+legend('Linear fit at 0dB', 'Smoothed curve at 0dB');
+xlabel('Frequency(Hz)')
+title(['Smoothed data and Linear Regression Model Centered at 0dB'])
+ylabel('Amplitude IR (dB)')
+set(gca, 'XScale', 'log')
+grid on
+xlim([10, 20000])
+ylim([-100, 100]) 
+close all
