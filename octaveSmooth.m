@@ -92,10 +92,7 @@ filt_sig_0db = filt_sig - y_intercept;
 
 subplot(2,1,2)
 hold on
-plot(center,mdl_eq_0db) 
-tic
-plot(center,filt_sig_0db);
-elapse = toc
+plot(center,mdl_eq_0db , center,filt_sig_0db);
 legend('Linear fit at 0dB', 'Smoothed curve at 0dB');
 xlabel('Frequency(Hz)')
 title(['Smoothed data and Linear Regression Model Centered at 0dB'])
@@ -103,5 +100,4 @@ ylabel('Amplitude IR (dB)')
 set(gca, 'XScale', 'log')
 grid on
 xlim([10, 20000])
-ylim([-100, 100]) 
-close all
+ylim([-100, 100])
