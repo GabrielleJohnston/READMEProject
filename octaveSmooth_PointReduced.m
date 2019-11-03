@@ -457,13 +457,13 @@ flower10 = fcenter10 / fd;
 
 %   Third Octave Smoothing the signal
 for i=1:length(fcenter10)
-    mag_smoothed_sgf_bark(i) =  sum(amp(find(f >= flower10(i) & f <= fupper10(i))))/length(find(f >= flower10(i) & f <= fupper10(i)));
+    mag_smoothed_bark(i) =  sum(amp(find(f >= flower10(i) & f <= fupper10(i))))/length(find(f >= flower10(i) & f <= fupper10(i)));
 end
 new_freq_bark = hz2bark(new_freq);
 
 %   Plotting
 figure(8)
-plot(fcenter10, mag_smoothed_sgf_bark)
+plot(fcenter10, mag_smoothed_bark)
 set(gca, 'XScale', 'log')
 grid on
 ylim([-100 50])
@@ -471,3 +471,51 @@ title('Smoothed magnitude spectrum')
 xlabel('Frequency (Hz)')
 ylabel('Magnitude (dB)')
 xlim([10 16000])
+
+%%
+%   Convolving IR.wav signal (point reduced and smoothed in frequency domain) with test
+%   signal
+[mario, fs_mario] = audioread('mario.mp3');
+% sound(mario, fs_mario)
+
+%fft of the original signal
+mNfft = 2^nextpow2(length(mario));
+mdft = fft(mario, mNfft);
+fft_mario = 20*log(abs(mdft)); % fft of original signal
+f_mario = fs_mario*((0:mNfft-1)/mNfft);
+
+
+%   Octave smoothing the test signal for octave smoothing
+for i=1:length(fcenter10)
+    oct_smoothed_mario(i) =  sum(fft_mario(find(f_mario >= flower10(i) & f_mario <= fupper10(i))))/length(find(f_mario >= flower10(i) & f_mario <= fupper10(i)));
+end
+
+%   Convolving the impulse reponse smoothed in the frequency domain
+%   with the test acoustic signal (Mario)
+%   mag_smoothed_bark is the point reduced and octave smoothed IR
+conv1 = conv(oct_smoothed_mario, mag_smoothed_bark);
+
+ifft_IR = ifft(mag_smoothed_bark);
+conv2 = conv( conv1,ifft_IR);
+
+deconv = abs(ifft(conv2));
+sound(deconv, fs_mario)
+
+%   Plotting fft of mario and the smoothed fft
+figure(9)
+hold on
+plot(fft_mario, 'r')
+plot(fcenter10, oct_smoothed_mario, 'b')
+legend('FFT of noisy Mario signal', 'Third Octave Smoothed Mario signal');
+set(gca, 'XScale', 'log')
+title('Smoothed magnitude spectrum of the input signal')
+xlabel('Frequency (Hz)')
+ylabel('Magnitude (dB)')
+xlim([10 16000])
+
+figure(10)
+plot(fcenter10, output(1:32))
+title('Convolution Output')
+xlabel('Frequency (Hz)')
+ylabel('Magnitude (dB)')
+set(gca, 'XScale', 'log')
