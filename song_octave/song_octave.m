@@ -6,8 +6,8 @@ load IR_smoothed_Base10_Oct.mat
 
 %   Getting input signal and IR signal
 
-[z1,fs1]=audioread('test.mp3.m4a');% fs = sample rate
-info1 = audioinfo('test.mp3.m4a');
+[z1,fs1]=audioread('Counting.m4a');% fs = sample rate
+info1 = audioinfo('Counting.m4a');
 NoSamples1 = info1.TotalSamples;
 
 [temp2,fs2]=audioread('IR.wav');% fs = sample rate
