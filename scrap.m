@@ -1,12 +1,35 @@
+%Read wav file, plot in frequency domain
 
+[y,fs]=audioread('signal.wav');% fs = sample rate
+info = audioinfo('signal.wav');
+NoSamples = info.TotalSamples;
 
-x = [1 2 3 4 5 6 7 8 9 10 11 12 13 14 15];
-y = [1 2 3 3 3 2 2 2 1 2 3 2 4 6 3];
-data = [x y];
-odd_width = 3;
-figure (1);
-subplot(2,1,1)
-plot(x,y);
-smoothed = (@Trig_Smooth)
-subplot(2,1,2)
-plot(x,smoothed);
+Y = fft(y);
+freq = fs*(0:NoSamples-1)/NoSamples;
+
+%plot frequency f against positive value of Y
+
+Mag = 20*log10(abs(Y));
+figure;
+
+plot(freq ,Mag,'r');
+xlabel('frequency(Hz)');
+ylabel('magnitude(dB)');
+xlim([10 100000])
+ylim([-100 50]);
+set(gca, 'XScale', 'log');
+set(gca, 'YScale', 'linear');
+%=================================================================
+%% plot smoothed version
+hold on;
+s = Trig_Smooth(Mag, 10, 2); %a function from Mathwork
+%figure(2);
+plot(freq,s,'b');
+legend('Original','Smooth');
+title('Frequency response of data');
+%% plot smooth (Alex)
+hold on;
+
+s = Trig_Smooth(Mag, 5); %a function from Mathwork
+plot(freq,s,'b');
+legend('Original','Smooth');
