@@ -1,5 +1,5 @@
-[data, fs] = audioread('IR19061314201696-1.wav');
-info = audioinfo('IR19061314201696-1.wav');
+[data, fs] = audioread('signal.wav');
+info = audioinfo('signal.wav');
 NoSamples = info.TotalSamples;
 [freq, mag] = getmag(data, fs, NoSamples);
 erb = hz2erb(freq);
