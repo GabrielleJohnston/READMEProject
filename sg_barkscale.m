@@ -11,7 +11,7 @@ for i = 1:barkScaleBands
     end_freq_indx(i) = find(round(barkScale) == i, 1);
 end
 
-idealNoPoints = [24 22 20 18 18 18 19 18 17 18 18 20 24 27 32 38 46 59 76 92 109 151 210 294];
+idealNoPoints = [24 22 20 18 18 18 19 18 17 18 18 17 17 16 15 14 13 12 10 7 4 5 5 6];
 
 band_spacing = zeros(barkScaleBands, 1);
 for i = 1:barkScaleBands
