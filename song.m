@@ -74,4 +74,3 @@ audiowrite('Conv_Counting.m4A',norm_resp,fs1);
 % resp=ifft(Resp);
 % subplot(5,1,5);
 % plot(1:length(resp),resp);
-% sound(resp,fs1);
