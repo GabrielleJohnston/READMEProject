@@ -36,8 +36,8 @@ new_freq = bark_space(freq, barkScaleBands, start_freq_indx, end_freq_indx, idea
 new_mag = bark_space(mag', barkScaleBands, start_freq_indx, end_freq_indx, idealNoPoints, band_spacing);
 new_phase = bark_space(phase', barkScaleBands, start_freq_indx, end_freq_indx, idealNoPoints, band_spacing);
 
-mag_smoothed_sgf_bark = sgolayfilt(new_mag, 9, 25, hamming(25));
-phase_smoothed_sgf_bark = sgolayfilt(new_phase, 9, 25, hamming(25));
+mag_smoothed_sgf_bark = sgolayfilt(new_mag, 9, 25;
+phase_smoothed_sgf_bark = sgolayfilt(new_phase, 9, 25);
 new_freq_bark = hz2bark(new_freq);
 
 mag0 = mag - max(mag);
