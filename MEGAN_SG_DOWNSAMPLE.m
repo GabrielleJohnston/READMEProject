@@ -2,7 +2,7 @@ close all
 clear all
 fclose('all')
 
-filename = 'GBS_Project.wav';
+filename = 'GBS_Project.wav'; % file sent to us orginally 
 [yIR, FsIR] = audioread(filename);    % Read in the audio file                  
 [yfile, FsFile] = audioread('NoisySpeech-16-22p5-mono-5secs.wav');  % Read in the audio file                  
 LFile = length(yfile);
@@ -23,7 +23,7 @@ mag = 20*log10(abs(YdIR));
 magFile = 20*log10(abs(Yfile));
 
 
-freq = [10:(40000-10)/(length(mag)-1):40000];
+freq = FsIR*(0:length(mag) - 1)/length(mag);
 
 % upperBandwidths = [100 200 300 400 510 630 770 920 1080 1270 1480 1720 2000 2320 2700 3150 3700 4400 5300 6400 7700 9500 12000 15500 40000];
 % frameLength = [100 100 100 100 110 120 140 150 160 190 210 240 280 320 380 450 550 700 900 1100 1300 1800 2500 3500 24500];
@@ -37,12 +37,16 @@ YnIR = interp(filteredIR,n);
 magYnIR = 20*log10(abs(YnIR)); 
 
 dsFreqFilt = FsIR*(0:length(mag) - 1)/length(mag);
-freqFilt = FsIR*(0:length(magYnIR) - 1)/length(magYnIR);     % Set scale for x-axis: between 10 and 40kHz - ensure length is same as that of length of signal
+freqFilt = FsIR*(0:length(magYnIR) - 1)/length(magYnIR);    
 
 
+% find the index of the cut off for each frequency band 
 ind_B1 = find(dsFreqFilt > 100, 1);
+% create an array for each band 
 band1 = mag(1:ind_B1 - 1);
+% calculate the downsample integer that gives the ideal number of points 
 n1 = ceil(length(band1)/24);
+% downsample each band 
 dsBand1 = downsample(band1, n1);
 
 ind_B2 = find(dsFreqFilt > 200, 1);
@@ -160,6 +164,8 @@ band24 = mag(ind_B23:ind_B24 - 1);
 n24 = ceil(length(band24)/6);
 dsBand24 = downsample(band24, n24);
 
+% for the final band (i.e. past 15500Hz) i continued the band length of 6
+% from above - i assumed it didnt matter for up to 40000Hz 
 band25 = mag(ind_B24:end);
 n25 = ceil(length(band25)/6);
 dsBand25 = downsample(band25, n25);
