@@ -128,4 +128,5 @@ plot(tnew_original, smoothed_data_original)
 title('Reconstructed smoothed signal')
 xlabel('time (s)')
 grid on
-audiowrite('Signalbark.wav', smoothed_data_original, 48000);
+smoothed_data_original1 = smoothed_data_original(1:round(end/2));
+audiowrite('Signalbark.wav', smoothed_data_original1, 48000);
