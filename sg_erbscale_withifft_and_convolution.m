@@ -37,8 +37,8 @@ new_freq = erb_space(freq, no_bands, samplesPerBand, band_spacing, sample_indx);
 new_mag = erb_space(mag', no_bands, samplesPerBand, band_spacing, sample_indx);
 new_phase = erb_space(phase', no_bands, samplesPerBand, band_spacing, sample_indx);
 
-mag_smoothed_sgf_erb = sgolayfilt(new_mag, 9, 25, hamming(25));
-phase_smoothed_sgf_erb = sgolayfilt(new_phase, 9, 25, hamming(25));
+mag_smoothed_sgf_erb = sgolayfilt(new_mag, 9, 25);
+phase_smoothed_sgf_erb = sgolayfilt(new_phase, 9, 25);
 figure(1)
 subplot(2, 1, 1);
 semilogx(freq, mag)
