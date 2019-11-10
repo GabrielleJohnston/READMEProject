@@ -94,7 +94,7 @@ ylabel('Phase (rad)')
 xlim([10 40000])
 
 %% Interpolating so that frequencies are evenly spaced
-finer_freq = 0:2.5:48000; % 2.5 freq throughout rather than varying spacing
+finer_freq = 0:2.5:47997.5; % 2.5 freq throughout rather than varying spacing
 interpol_phase_smoothed = interp1(new_freq, phase_smoothed_sgf_bark, finer_freq);
 interpol_mag_smoothed = interp1(new_freq, mag_smoothed_sgf_bark, finer_freq);
 
@@ -128,5 +128,4 @@ plot(tnew_original, smoothed_data_original)
 title('Reconstructed smoothed signal')
 xlabel('time (s)')
 grid on
-smoothed_data_original1 = smoothed_data_original(1:2:round(end/2));
-audiowrite('Signalbark.wav', smoothed_data_original1, 48000);
+audiowrite('Signalbark.wav', smoothed_data_original, 48000);
