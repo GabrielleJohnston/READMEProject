@@ -32,7 +32,7 @@ amp = 20*log(abs(ydft)); % amp is the fft of original signal
 
 f = fs*((0:Nfft-1)/Nfft);
 
-
+maxAmp = max(amp);
 
 %   Plotting the unsmoothed signal
 
@@ -40,7 +40,7 @@ figure(2)
 
 subplot(2,1,1)
 
-plot(f, amp);
+plot(f, amp - maxAmp);
 
 xlabel('Frequency(Hz)')
 
@@ -54,6 +54,8 @@ set(gca, 'XScale', 'log')
 
 xlim([10, 20000])
 
+ylim([-120 0])
+
 % Testing the formula gotten from Wikipedia
 % One-third Octave band with base 2
 
@@ -61,13 +63,14 @@ xlim([10, 20000])
 % Calculating the fcentre, fupper and flower values
 for j = 1:20
     tic;
-    fcenter2  = 10^3 * (2 .^ ([-18:13]/3));
+    fcenter2  = 10^3 * (2 .^ ([-18:16]/3));
     fd = 2^(1/6);
     fupper2 = fcenter2 * fd;
     flower2 = fcenter2 / fd;
     elapsed2val(j) = toc;
 end
-meanElapsed2val = mean(elapsed2val)
+max(fupper2)
+meanElapsed2val = mean(elapsed2val);
 for j = 1:20
     tic;
     % Filtering the signal
@@ -76,25 +79,26 @@ for j = 1:20
     end
     elapsed2(j) = toc;
 end
-mean_base2 = mean(elapsed2)
+mean_base2 = mean(elapsed2);
 subplot(2,1,2)
 hold on
+max2 = max(filt_sig2);
 
 % %Plotting the signal smoothed by the Base 2 One-Third Octave Band smoothing
-plot(fcenter2 , filt_sig2);
+plot(fcenter2 , filt_sig2 - max2);
 
 %Wikipedia formula for Base 10 1/3 Octave Band Smoothing
 
 %Calculating the fcentre, fupper and flower values
 for j = 1:20
     tic;
-    fcenter10 = 10.^(0.1.*[12:43]);
+    fcenter10 = 10.^(0.1.*[12:46]);
     fd = 10^0.05;
     fupper10 = fcenter10 * fd;
     flower10 = fcenter10 / fd;
     elapsed10val(j) = toc;
 end
-meanElapsed10val = mean(elapsed10val)
+meanElapsed10val = mean(elapsed10val);
 for j = 1:20
     tic;
     for i=1:length(fcenter10)
@@ -103,9 +107,9 @@ for j = 1:20
     elapsed10(j) = toc;
     
 end
-mean_base10 = mean(elapsed10)
-plot(fcenter10 , filt_sig10);
-
+mean_base10 = mean(elapsed10);
+max10 = max(filt_sig10);
+plot(fcenter10 , filt_sig10 - max10);
 legend('Base 2 1/3 Octave Smoothing filter', 'Base 10 1/3 Octave Smoothing filter');
 
 xlabel('Frequency(Hz)')
@@ -120,6 +124,6 @@ grid on
 
 xlim([10, 20000])
 
-ylim([-100, 100])
+ylim([-120, 0])
 
 hold off
