@@ -75,7 +75,8 @@ for j = 1:20
     tic;
     % Filtering the signal
     for i=1:length(fcenter2)
-        filt_sig2(i) =  sum(amp(find(f >= flower2(i) & f <= fupper2(i))))/length(find(f >= flower2(i) & f <= fupper2(i)));
+        filt_sig2(i) =  sum(amp(find(f >= flower2(i) & f <= fupper2(i))))/length(find(f >= flower2(i) & f <= fupper2(i))); %arithmetic mean
+        %filt_sig2(i) =  10*log(sum(10.^(0.1*amp(find(f >= flower2(i) & f <= fupper2(i)))))/length(find(f >= flower2(i) & f <= fupper2(i)))); % logarithmic mean
     end
     elapsed2(j) = toc;
 end
@@ -103,6 +104,7 @@ for j = 1:20
     tic;
     for i=1:length(fcenter10)
         filt_sig10(i) =  sum(amp(find(f >= flower10(i) & f <= fupper10(i))))/length(find(f >= flower10(i) & f <= fupper10(i)));
+        %filt_sig10(i) =  10*log(sum(10.^(0.1*amp(find(f >= flower10(i) & f <= fupper10(i)))))/length(find(f >= flower10(i) & f <= fupper10(i)))); % logarithmic mean
     end
     elapsed10(j) = toc;
     
