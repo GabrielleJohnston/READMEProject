@@ -69,7 +69,7 @@ for j = 1:20
     flower2 = fcenter2 / fd;
     elapsed2val(j) = toc;
 end
-max(fupper2)
+
 meanElapsed2val = mean(elapsed2val);
 for j = 1:20
     tic;
