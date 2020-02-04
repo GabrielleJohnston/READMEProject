@@ -4,6 +4,8 @@ info = audioinfo('IR19061314201696-1.wav');
 dur = info.Duration;
 NoSamples = info.TotalSamples;
 
+% Take small portion of impulse response cutting zeros values and
+% distortions
 range_start = 522400;
 range_end = 559600;
 data_abv = data(range_start:range_end);
@@ -18,32 +20,39 @@ mag_abv = 20*log10(abs(trans_abv));
 phase_abv = unwrap(angle(trans_abv));
 group_delay_abv = -diff(phase_abv)./(diff(freq_abv')*360);
 
+% rectangular bark smoothing
 [mag_abv_rlog_mean_bark, freq_abv_bark] = rlogbark(freq_abv, mag_abv);
 [phase_abv_geo_mean_bark, freq_abv_bark] = rgeobark(freq_abv, phase_abv);
 [grp_abv_geo_mean_bark, freq_abv_bark] = rgeobark(freq_abv, group_delay_abv);
 
+% shift so that max is at 0
 mag_bark_adj = mag_abv_rlog_mean_bark - max(mag_abv_rlog_mean_bark);
 
 Re_trans_bark = 10.^(mag_bark_adj./20);
 trans_bark = Re_trans_bark.*(exp(1i*wrapToPi(phase_abv_geo_mean_bark)));
 
+% get inverse filter values
 [MP_inv, AP_inv] = inverseFilter(trans_bark);
 
+% minimum phase only equalising
 signal_equalised_MP_only = trans_bark.*MP_inv;
 mag_equalised_MP_only = 20.*log10(abs(signal_equalised_MP_only));
 phase_equalised_MP_only = unwrap(angle(signal_equalised_MP_only));
 group_delay_equalised_MP_only= -diff(phase_equalised_MP_only)./(diff(freq_abv_bark')*360);
 
+% minimum phase + 50% of allpass equalising
 signal_equalised_MP_halfAP = signal_equalised_MP_only.*(0.5.*AP_inv);
 mag_equalised_MP_halfAP = 20.*log10(abs(signal_equalised_MP_halfAP));
 phase_equalised_MP_halfAP = unwrap(angle(signal_equalised_MP_halfAP));
 group_delay_equalised_MP_halfAP = -diff(phase_equalised_MP_halfAP)./(diff(freq_abv_bark')*360);
 
+% minimum phase + allpass equalising
 signal_equalised_MP_and_AP = signal_equalised_MP_only.*AP_inv;
 mag_equalised_MP_and_AP = 20.*log10(abs(signal_equalised_MP_and_AP));
 phase_equalised_MP_and_AP = unwrap(angle(signal_equalised_MP_and_AP));
 group_delay_equalised_MP_and_AP = -diff(phase_equalised_MP_and_AP)./(diff(freq_abv_bark')*360);
 
+% finding group delay applied by minimum phase and allpass filters
 phase_MP_inv = unwrap(angle(MP_inv));
 phase_AP_inv = unwrap(angle(AP_inv));
 group_delay_MP_inv= -diff(phase_MP_inv)./(diff(freq_abv_bark')*360);
