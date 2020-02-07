@@ -18,7 +18,8 @@ if not (file == 0)
     [x,fs] = audioread(audio);
 
     % Y1 
-    subplot(8,2,1)
+    figure(7)
+%     subplot(8,2,1)
     y1 = bandpass(x,[44 88],4400); 
     start_index1 = min(find(y1>1e-4)); 
     y1 = y1(start_index1:end,:);  
@@ -34,7 +35,7 @@ if not (file == 0)
                 else
                     title('Impulse Response for 44Hz - 88Hz band Right Channel');
                 end
-    figure;
+    figure(6);
     %subplot(8,2,2)
     EDC1 = 10*log10(flipud(cumsum(flipud(y1.^2)))); % impulse response is stored in one dimension, thus do not have to add size of vector in cumsum 
     EDC1 = EDC1 - max(EDC1); % max(EDC) is a constant value that normalises the graph to 0dB 

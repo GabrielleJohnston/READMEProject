@@ -1,4 +1,4 @@
-function SWEEPmeasurement(name, f1, f2, time, number, silence, mode, fs, verbose, preequal, lin)
+function SWEEPmeasurement(name, f1, f2, time, number, silence, mode, fs, verbose, preequal, lin, smoothing)
 % This function is the main function that calls on all other functions.
 % ---------------------------------------------------------------------
 % SWEEPmeasurement(name [,f1] [,f2] [,time] [,number] [,silence] [,mode] [,fs] [,verbose] [, preequal] [,lin])
@@ -25,8 +25,7 @@ function SWEEPmeasurement(name, f1, f2, time, number, silence, mode, fs, verbose
 % preequal specifies whether the signal being sent is a preequalized signal (= 1) or not (= 0): default = 0
 %
 % lin specifies whether this is a linear (= 1) or logarithmic (= 0) "sweep": default = 0
-
-clc;
+% clc;
 setpath;
 current = AppConversion;
 tic;
@@ -103,12 +102,12 @@ end
 
 fprintf('Measurement of the impulse response by the "exponential sine sweep" method\n');
 fprintf('==========================================================================\n\n');
-fprintf('Sineweep type: %s\nInitial frequency: %dHz\nFinal frequency: %dHz\nSignal duration: %gs\nNumber of "sweep": %d\nDuration of zones of silence: %gs\nMeasurement carried out in: %s\nFrequency of sampling: %dHz\n\n',...
+fprintf('Sinesweep type: %s\nInitial frequency: %dHz\nFinal frequency: %dHz\nSignal duration: %gs\nNumber of "sweep": %d\nDuration of zones of silence: %gs\nMeasurement carried out in: %s\nFrequency of sampling: %dHz\n\n',...
    genre,f1,f2,time,number,silence,mORs,fs);
 
 %Creation of a new directory with today's date
 %---------------------------------------------
-cd(MEASURES_SWEEP_PATH);
+% cd(MEASURES_SWEEP_PATH);
 newpath = strcat(date);
 if exist(newpath, 'dir')
 
@@ -126,8 +125,6 @@ tol2 = 0.1; %
 
 fprintf('\nYou asked a sinesweep measurement from %dHz to %dHz.\n',f1,f2);
 fprintf('\nWARNING: The sinesweep generated will actually go from %dHz to %dHz.\n',f1-(tol1*f1),f2+(tol2*f2));
-fprintf('\nPush any key to continue or ctrl+c to cancel.\n');
-pause;
 
 if (preequal == 1)
    if not(exist(sprintf('%s%s-EQ%d-%d-%d-%d-%d-%d-%d.wav',SWEEP_EQ_PATH,genre,f1,f2,time,number,silence,fs,mode),'file'))
@@ -209,7 +206,7 @@ if (verbose ~= 0)
    msgbox (s, 'Information', 'custom', Data, hot(64));
 end
 
-plotspectlogf_modified(IR,fs,f1,f2);
+plotspectlogf_modified(IR,fs,f1,f2, smoothing);
 legend(sprintf('%s-%dh-%dm',name,c(4),c(5)),'Location','Best');
 zoom on;
 
