@@ -1,3 +1,0 @@
-I split the inverse filter into a minimum phase and an all pass filter using the technique in https://link.springer.com/content/pdf/10.3758/BF03192851.pdf. 
-
-The first two figures display the equalised magnitude and phase for the minimum phase filter only, the minimum phase and 50% all pass filter, and the minimum phase and all pass filter. Figure 3 shows the group delay the minimum phase and all pass filters apply, demonstrating why in some cases the minimum phase filter is more ideal, or why sometimes only some of the all pass filter should be used on top of the minimum phase filter. 
