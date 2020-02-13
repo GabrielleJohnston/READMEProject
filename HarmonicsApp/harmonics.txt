@@ -1,0 +1,3 @@
+Main app and harmonics app for example of how to implement.
+
+Make sure to run the main app first otherwise the harmonics app won't work.
