@@ -42,7 +42,7 @@ SCRIPTS_PATH = strcat(root_path);
  
 %Directory containing "sine sweep" Measurements
 global MEASURES_SWEEP_PATH;
-MEASURES_SWEEP_PATH = strcat(root_path,'Measurements',filesep)
+MEASURES_SWEEP_PATH = strcat(root_path,'Measurements',filesep);
  
 %Directory containing reference SineSweep
 global SWEEP_PATH;

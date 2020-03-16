@@ -76,6 +76,7 @@ if not (file == 0)
     
     figure;
     for i = 1:size(x,2)
+        grid on
         subplot(size(x,2),1,i);
         hann_window = hann(left_win*fs);
         tukey_window = tukeywin(right_win*fs,0.25);

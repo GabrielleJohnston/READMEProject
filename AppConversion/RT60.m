@@ -19,13 +19,15 @@ if not (file == 0)
 
     % Y1 
     figure(7)
-%     subplot(8,2,1)
+	subplot(4,2,1)
     y1 = bandpass(x,[44 88],4400); 
     start_index1 = min(find(y1>1e-4)); 
     y1 = y1(start_index1:end,:);  
     y1_a = abs(y1);
     time_1 = (0:length(y1)-1)/fs; 
     plot(time_1, y1);
+    ylabel('Arbitrary Units (AU)');
+    xlabel('Time (s)');
     grid;
 
                 if (size(x,2) == 1)
@@ -35,14 +37,19 @@ if not (file == 0)
                 else
                     title('Impulse Response for 44Hz - 88Hz band Right Channel');
                 end
-    figure(6);
-    %subplot(8,2,2)
+    
+    
+	subplot(4,2,2)
     EDC1 = 10*log10(flipud(cumsum(flipud(y1.^2)))); % impulse response is stored in one dimension, thus do not have to add size of vector in cumsum 
     EDC1 = EDC1 - max(EDC1); % max(EDC) is a constant value that normalises the graph to 0dB 
     plot(time_1,EDC1); 
     ylim([-80 10])
     xlim([0 4])
     grid;
+    xlabel('Time (s)');
+    ylabel('Amplitude (dB)');
+    set(gca, 'XScale', 'log');
+
                 if (size(x,2) == 1)
                     title('Schroeder Integral for 44Hz - 88Hz band');
                 elseif (i == 1)      %outermost loop is for left channel, then right channel if stereo - IS THIS WRONG?
@@ -93,13 +100,16 @@ if not (file == 0)
                 time_y1_T30 = -60./slope_y1_T30
     
     % Y2
-    subplot(8,2,3)
+    
+	subplot(4,2,3)
     y2 = bandpass(x, [88 177], 4400); 
     start_index2 = min(find(y2>1e-4)); 
     y2 = y2(start_index2:end,:); 
     y2_a = abs(y2);
     time_2 = (0:length(y2)-1)/fs;
     plot(time_2, y2);
+    ylabel('Arbitrary Units (AU)');
+    xlabel('Time (s)');
     grid;
                 if (size(x,2) == 1)
                     title('Impulse Response for 88Hz - 177Hz band');
@@ -109,13 +119,16 @@ if not (file == 0)
                     title('Impulse Response for 88Hz - 177Hz band Right Channel');
                 end
 
-    subplot(8,2,4)
+    subplot(4,2,4)
     EDC2 = 10*log10(flipud(cumsum(flipud(y2.^2)))); 
     EDC2 = EDC2 - max(EDC2); 
     plot(time_2, EDC2);
     ylim([-80 10])
     xlim([0 4])
     grid;
+    xlabel('Time (s)');
+    ylabel('Amplitude (dB)');
+    set(gca, 'XScale', 'log');
                 if (size(x,2) == 1)
                     title('Schroeder Integral for 88Hz - 177Hz band');
                 elseif (i == 1)      %outermost loop is for left channel, then right channel if stereo - IS THIS WRONG?
@@ -157,13 +170,15 @@ if not (file == 0)
                 time_y2_T30 = -60./slope_y2_T30
 
     % Y3 
-    subplot(8,2,5)
+    subplot(4,2,5)
     y3 = bandpass(x, [177 355], 4400); 
     start_index3 = min(find(y3>1e-4)); 
     y3 = y3(start_index3:end,:); 
     y3_a = abs(y3);
     time_3 = (0:length(y3)-1)/fs; 
     plot(time_3, y3); 
+    ylabel('Arbitrary Units (AU)');
+    xlabel('Time (s)');
     grid;
                if (size(x,2) == 1)
                   title('Impulse Response for 177Hz - 355Hz band');
@@ -173,13 +188,16 @@ if not (file == 0)
                   title('Impulse Response for 177Hz - 355Hz band Right Channel');
                end 
 
-    subplot(8,2,6) 
+    subplot(4,2,6) 
     EDC3 = 10*log(flipud(cumsum(flipud(y3.^2))));
     EDC3 = EDC3 - max(EDC3);
     plot(time_3, EDC3);
     ylim([-80 10])
     xlim([0 4])
     grid;
+    xlabel('Time (s)');
+    ylabel('Amplitude (dB)');
+    set(gca, 'XScale', 'log');
                if (size(x,2) == 1)
                   title('Schroeder Integral for 177Hz - 355Hz band');
                elseif (i == 1)      %outermost loop is for left channel, then right channel if stereo - IS THIS WRONG?
@@ -221,13 +239,15 @@ if not (file == 0)
                 time_y3_T30 = -60./slope_y3_T30
               
     % Y4 
-    subplot(8,2,7)
+    subplot(4,2,7)
     y4 = bandpass(x, [355 710], 4400);
     start_index4 = min(find(y4>1e-4)); 
     y4 = y4(start_index4:end,:); 
     y4_a = abs(y4); 
     time_4 = (0:length(y4)-1)/fs; 
-    plot(time_4, y4); 
+    plot(time_4, y4);
+    ylabel('Arbitrary Units (AU)');
+    xlabel('Time (s)'); 
     grid;
                 if (size(x,2) == 1)
                     title('Impulse Response for 355Hz - 710Hz band');
@@ -238,13 +258,16 @@ if not (file == 0)
                 end 
 
 
-    subplot(8,2,8)
+    subplot(4,2,8)
     EDC4 = 10*log(flipud(cumsum(flipud(y4.^2))));
     EDC4 = EDC4 - max(EDC4); 
     plot(time_4, EDC4);
     ylim([-80 10])
     xlim([0 4])
     grid;
+    xlabel('Time (s)');
+    ylabel('Amplitude (dB)');
+    set(gca, 'XScale', 'log');
                 if (size(x,2) == 1)
                     title('Schroeder Integral for 355Hz - 710Hz band');
                 elseif (i == 1)      %outermost loop is for left channel, then right channel if stereo - IS THIS WRONG?
@@ -286,13 +309,16 @@ if not (file == 0)
                 time_y4_T30 = -60./slope_y4_T30
 
     % Y5 
-    subplot(8,2,9)
+    figure()
+    subplot(4,2,1)
     y5 = bandpass(x, [710 1420], 4400);
     start_index5 = min(find(y5>1e-4)); 
     y5 = y5(start_index5:end,:);
     y5_a = abs(y5);
     time_5 = (0:length(y5)-1)/fs; 
     plot(time_5, y5);
+    ylabel('Arbitrary Units (AU)');
+    xlabel('Time (s)');
     grid;
                if (size(x,2) == 1)
                   title('Impulse Response for 710Hz - 1420Hz band');
@@ -302,13 +328,16 @@ if not (file == 0)
                   title('Impulse Response for 710Hz - 1420Hz band Right Channel');
                end 
 
-    subplot(8,2,10)
+    subplot(4,2,2)
     EDC5 = 10*log(flipud(cumsum(flipud(y5.^2))));
     EDC5 = EDC5 - max(EDC5);
     plot(time_5, EDC5);
     ylim([-80 10])
     xlim([0 4])
     grid;
+    xlabel('Time (s)');
+    ylabel('Amplitude (dB)');
+    set(gca, 'XScale', 'log');
                if (size(x,2) == 1)
                   title('Schroeder Integral for 710Hz - 1420Hz band');
                elseif (i == 1)      %outermost loop is for left channel, then right channel if stereo - IS THIS WRONG?
@@ -350,13 +379,15 @@ if not (file == 0)
                 time_y5_T30 = -60./slope_y5_T30
 
     % Y6 
-    subplot(8,2,11)
+    subplot(4,2,3)
     y6 = bandpass(x, [1420 2840], 4400);
     start_index6 = min(find(y6>1e-4)); 
     y6 = y6(start_index6:end,:);
     y6_a = abs(y6);
     time_6 = (0:length(y6)-1)/fs;
     plot(time_6,y6); 
+    ylabel('Arbitrary Units (AU)');
+    xlabel('Time (s)');
     grid;
                if (size(x,2) == 1)
                   title('Impulse Response for 1420Hz - 2840Hz band');
@@ -366,13 +397,16 @@ if not (file == 0)
                   title('Impulse Response for 1420Hz - 2840Hz band Right Channel');
                end
 
-    subplot(8,2,12)
+    subplot(4,2,4)
     EDC6 = 10*log(flipud(cumsum(flipud(y6.^2)))); 
     EDC6 = EDC6 - max(EDC6); 
     plot(time_6, EDC6); 
     ylim([-80 10])
     xlim([0 4])
     grid;
+    xlabel('Time (s)');
+    ylabel('Amplitude (dB)');
+    set(gca, 'XScale', 'log');
                if (size(x,2) == 1)
                   title('Schroeder Integral for 1420Hz - 2840Hz band');
                elseif (i == 1)      %outermost loop is for left channel, then right channel if stereo - IS THIS WRONG?
@@ -414,13 +448,15 @@ if not (file == 0)
                 time_y6_T30 = -60./slope_y6_T30
 
     % Y7 
-    subplot(8,2,13)
+    subplot(4,2,5)
     y7 = bandpass(x, [2840 5680], 24000); 
     start_index7 = min(find(y7>1e-4)); 
     y7 = y7(start_index7:end,:);
     y7_a = abs(y7);
     time_7 = (0:length(y7)-1)/fs;
     plot(time_7, y7); 
+    ylabel('Arbitrary Units (AU)');
+    xlabel('Time (s)');
     grid;
                if (size(x,2) == 1)
                   title('Impulse Response for 2840Hz - 5680Hz band');
@@ -430,13 +466,16 @@ if not (file == 0)
                   title('Impulse Response for 2840Hz - 5680Hz band Right Channel');
                end
 
-    subplot(8,2,14)
+    subplot(4,2,6)
     EDC7 = 10*log(flipud(cumsum(flipud(y7.^2))));
     EDC7 = EDC7 - max(EDC7);
     plot(time_7, EDC7);
     ylim([-80 10])
     xlim([0 4])
     grid;
+    xlabel('Time (s)');
+    ylabel('Amplitude (dB)');
+    set(gca, 'XScale', 'log');
                if (size(x,2) == 1)
                   title('Schroeder Integral for 2840Hz - 5680Hz band');
                elseif (i == 1)      %outermost loop is for left channel, then right channel if stereo - IS THIS WRONG?
@@ -462,7 +501,7 @@ if not (file == 0)
                 time_y7_EDT = -60./slope_y7_EDT  
 
                 % T20
-
+                        
                 time_x7_T20_fivedb = time_1(index_y7_fivedb);
                 time_x7_T20_twentyfivedb = time_1(index_y7_twentyfivedb);
 
@@ -478,13 +517,15 @@ if not (file == 0)
                 time_y7_T30 = -60./slope_y7_T30
 
     % Y8
-    subplot(8,2,15)
+    subplot(4,2,7)
     y8 = bandpass(x, [5680 11360], 24000);
     start_index8 = min(find(y8>1e-4)); 
     y8 = y8(start_index8:end,:);
     y8_a = abs(y8);
     time_8 = (0:length(y8)-1)/fs; 
     plot(time_8, y8);
+    ylabel('Arbitrary Units (AU)');
+    xlabel('Time (s)');
     grid;
                if (size(x,2) == 1)
                   title('Impulse Response for 5680Hz - 11360Hz band');
@@ -494,13 +535,16 @@ if not (file == 0)
                   title('Impulse Response for 5680Hz - 11360Hz band Right Channel');
                end 
 
-    subplot(8,2,16) 
+    subplot(4,2,8)
     EDC8 = 10*log(flipud(cumsum(flipud(y8.^2))));
     EDC8 = EDC8 - max(EDC8); 
     plot(time_8, EDC8);
     ylim([-80 10])
     xlim([0 4])
     grid;
+    xlabel('Time (s)');
+    ylabel('Amplitude (dB)');
+    set(gca, 'XScale', 'log');
                if (size(x,2) == 1)
                   title('Schroeder Integral for 5680Hz - 11360Hz band');
                elseif (i == 1)      %outermost loop is for left channel, then right channel if stereo - IS THIS WRONG?
@@ -551,16 +595,20 @@ if not (file == 0)
                         Filter = [63 125 250 500 1000 2000 4000 8000];
 
                         % EDT Plot for All Filtered Signals
-
+                        
                         EDT = [time_y1_EDT time_y2_EDT time_y3_EDT time_y4_EDT time_y5_EDT time_y6_EDT time_y7_EDT time_y8_EDT];
 
                         plot(Filter, EDT, 'o-');
+%                         [EDT_bark, freq_out] = rlogbark(Filter, EDT);
+%                         [EDT_oct, fcenter] = OctaveSmooth(EDT, Filter, 2);
 
                         % T20 Plot for All filtered Signals
 
                         T20 = [time_y1_T20 time_y2_T20 time_y3_T20 time_y4_T20 time_y5_T20 time_y6_T20 time_y7_T20 time_y8_T20];
 
                         plot(Filter, T20, '+-');
+%                         [T20_bark, freq_out] = rlogbark(Filter, T20);
+%                         [T20_oct, fcenter] = OctaveSmooth(T20, Filter, 2);
 
 
                         % T30 Plot for All filtered Signals
@@ -568,6 +616,12 @@ if not (file == 0)
                         T30 = [time_y1_T30 time_y2_T30 time_y3_T30 time_y4_T30 time_y5_T30 time_y6_T30 time_y7_T30 time_y8_T30];
 
                         plot(Filter, T30, '*-');
+%                         [T30_bark, freq_out] = rlogbark(Filter, T30);
+%                         [T30_oct, fcenter] = OctaveSmooth(T30, Filter, 2);
+                        
+                        set(gca, 'XScale', 'log');
+                        ylabel('Reverberation Time (s)')
+                        xlabel('Filtered Signal Bands (Hz)')
 
                         grid on
                         grid minor 
@@ -581,6 +635,18 @@ if not (file == 0)
                           end 
 
 
+% assignin('base','Filter',Filter);
+% assignin('base','EDT',EDT);
+% assignin('base','EDT_bark',EDT_bark);
+% assignin('base','EDT_oct',EDT_oct);
+% assignin('base','T20',T20);
+% assignin('base','T20_bark',T20_bark);
+% assignin('base','T20_oct',T20_oct);
+% assignin('base','T30',T30);
+% assignin('base','T30_bark',T30_bark);
+% assignin('base','T30_oct',T30_oct);
+% assignin('base','freq_out',freq_out);
+% assignin('base','fcenter',fcenter);
 else
     fprintf('Operation cancelled.\n');
     return
