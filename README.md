@@ -1,6 +1,19 @@
 # READMEProject
-This is a 3rd year bioengineering project at Imperial College London 
+This is a 3rd year bioengineering project at Imperial College London into the pyscoacoustic affects of distortion induced by transducers and the different methods of removing it. 
+Supervisors:
+- Dr Guy-Bart Stan
+- Mr Christophe Hermans
 
+Group Members:
+- Megan Allerton
+- Krithika Balaji
+- Hongzhange (Tommy) Chen
+- Marcella Iswanto
+- Shivali Jain
+- Gabrielle Johnston
+- Alexander McKinnon
+
+# Files in repository are grouped as follows:
 Inverse Filter:
 - alpaToSigma.m
 - barkwarp.m
@@ -32,4 +45,4 @@ Group Delay:
 Amplitude Distortion:
 - AmpAQM.m
 - toleranceTube.mat
-  - Limits for toloerance tube
+  - Limits for tolerance tube
