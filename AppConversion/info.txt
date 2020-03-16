@@ -1,0 +1,8 @@
+Place files inside AS_Code folder
+
+SineSweepMethod_App currently calls a function SWEEPmeasurement that isn't working with the app.
+
+AS_App seems mostly done, as does getlocation_App.
+
+Sorry it's been a while so not entirely sure.
+
