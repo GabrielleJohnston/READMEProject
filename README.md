@@ -1,5 +1,6 @@
 # READMEProject
 This is a 3rd year bioengineering project at Imperial College London into the pyscoacoustic affects of distortion induced by transducers and the different methods of removing it. 
+
 Supervisors:
 - Dr Guy-Bart Stan
 - Mr Christophe Hermans
