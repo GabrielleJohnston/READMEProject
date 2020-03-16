@@ -30,3 +30,5 @@ Group Delay:
  - Blauert.mat
 
 Amplitude Distortion:
+ - AmpAQM.m
+ - toleranceTube.mat
