@@ -1,4 +1,4 @@
-function [log_means, freq_out] = rlogbark(freq, signal)
+function [geo_means, freq_out] = rgeobark(freq, signal)
     idealNoPoints = [24 22 20 18 18 18 19 18 17 18 18 17 17 16 15 14 13 12 10 7 4 5 5 6 6];
     barkScaleBands = 25; % 24 + 1 for 15500 to 48000 Hz
     bark_freq = [100 200 300 400 510 630 770 920 1080 1270 1480 1720 2000 2320 2700 3150 3700 4400 5300 6400 7700 9500 12000 15500 48000];
@@ -25,10 +25,10 @@ function [log_means, freq_out] = rlogbark(freq, signal)
             band_spacing(i) = round((end_freq_indx(i) - end_freq_indx(i - 1))/idealNoPoints(i));
         end
     end
-    freq_indx = start_freq_indx:band_spacing(1):(band_spacing(1)*(idealNoPoints(1)-1) + start_freq_indx); % samples in 1st band
+    freq_indx = start_freq_indx:band_spacing(1):(band_spacing(1)*(idealNoPoints(1)-1) + start_freq_indx);
     for n = 2:barkScaleBands
         freq_indx_temp = (end_freq_indx(n - 1)):band_spacing(n):(band_spacing(n)*(idealNoPoints(n) - 1) + end_freq_indx(n - 1));
-        freq_indx_temp2 = horzcat(freq_indx, freq_indx_temp); % concatenate 
+        freq_indx_temp2 = horzcat(freq_indx, freq_indx_temp); % concantenate
         if n < barkScaleBands
             freq_indx = freq_indx_temp2;
         else
@@ -52,18 +52,18 @@ function [log_means, freq_out] = rlogbark(freq, signal)
             end
         end
     end
-    log_means = zeros(length(freq_indx), 1);
-    log_means(1) = signal(freq_indx(1));
+    geo_means = zeros(length(freq_indx), 1);
+    geo_means(1) = signal(freq_indx(1));
     for n = 2:length(freq_indx)-1
-        log_means(n) = 10*log10(sum(10.^(0.1*signal((freq_indx(n) - floor(avg_spacing(n - 1)/2)):(freq_indx(n) + floor(avg_spacing(n - 1)/2)))))/(avg_spacing(n - 1))); % logarithmic mean
+        geo_means(n) = mean(signal((freq_indx(n) - floor(avg_spacing(n - 1)/2)):(freq_indx(n) + floor(avg_spacing(n - 1)/2)))); % geometric mean
     end
     % replace 48000 Hz avg with avg over smaller range
-    log_means(end) = 10*log10(sum(10.^(0.1*signal((freq_indx(end) - 1000):(freq_indx(end) + 1000))))/2001);
+    geo_means(end) = mean(signal((freq_indx(end) - 1000):(freq_indx(end) + 1000)));
     freq_out = freq(freq_indx);
     for n = 2:length(freq_out)
         if freq_out(n) <= freq_out(n - 1)
             freq_out(n) = freq_out(n - 1);
-            log_means(n) = log_means(n - 1);
+            geo_means(n) = geo_means(n - 1);
         end
     end
 end
