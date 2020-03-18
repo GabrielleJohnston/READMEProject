@@ -8,7 +8,7 @@ Supervisors:
 Group Members:
 - Megan Allerton
 - Krithika Balaji
-- Hongzhange (Tommy) Chen
+- Hongzhang (Tommy) Chen
 - Marcella Iswanto
 - Shivali Jain
 - Gabrielle Johnston
