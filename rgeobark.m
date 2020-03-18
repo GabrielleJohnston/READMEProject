@@ -9,7 +9,7 @@ function [geo_means, freq_out] = rgeobark(freq, signal)
         if isempty(endf)
             endf1 = find(freq > bark_freq(i), 1);
             endf2 = find(freq < bark_freq(i), 1);
-            if (abs(endf1 - bark_freq(i)) < abs(endf2 - bark_freq(i)))
+            if (abs(freq(endf1) - bark_freq(i)) < abs(freq(endf2) - bark_freq(i)))
                 endf = endf1;
             else
                 endf = end2;
