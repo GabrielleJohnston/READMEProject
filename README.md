@@ -43,7 +43,7 @@ Acoustic quality metric measuring:
   - Impulse response of the Bose QC20 headphones
 - boseironly.m
   - Creates warped FIR and warped IIR inverse filters for the Bose QC20 headphones impulse response
-- if_demo.m
+- **if_demo.m**
   - Code for testing and demonstrating different inverse filters and functions
 - inverseFilter.m
   - Function for finding minimum phase and all-pass inverse filter components in the frequency domain
