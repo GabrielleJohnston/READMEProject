@@ -4,7 +4,7 @@ This is a 3rd year bioengineering project at Imperial College London that is res
 
 # Goals
 General:
-- [x] Matlab guide converted to Matlab App designer
+- [x] Matlab GUIDE converted to Matlab App designer
 - [x] Psychoacoustical testing of inverse filter
 
 Inverse filter using:
