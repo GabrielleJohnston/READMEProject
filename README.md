@@ -1,17 +1,17 @@
 # Digital Signal Processing Applications in Hearing Aids
 ## Elimination of the hearing aid’s transducer effectson the emitted signal
-This is a 3rd year bioengineering project at Imperial College London that is researching into the pyscoacoustic affects of distortion induced by transducers. We explore how a transducer can affect the amplitude, phase, group delay and induce new frequencies into an input signal. We determine the psycoacoustical perception of these affects and quantify them using novel Acoustic Quality Metrics. Finaly, we aim to remove all the affects of a transducer by creating an inverse filter.
+This is a 3rd year bioengineering project at Imperial College London that is researching into the psychoacoustic effects of distortion induced by transducers. We explore how a transducer can affect the amplitude, phase, group delay and induce new frequencies into an input signal. We determine the psychoacoustic perception of these effects and quantify them using novel Acoustic Quality Metrics. Finaly, we aim to remove all the effects of a transducer by creating an inverse filter.
 
 # Goals
 General:
 - [x] Matlab guide converted to Matlab App designer
-- [x] Psycoacoustical testing of inverse filter
+- [x] Psychoacoustical testing of inverse filter
 
 Inverse filter using:
-- [x] Warped Finite Impulse response
-- [x] Warped Infinite Impulse response
-- [ ] Finite Impulse response
-- [ ] Infinite Impulse response
+- [x] Warped FIR filtering
+- [x] Warped IIR filtering
+- [ ] FIR filtering
+- [ ] IIR filtering
 
 Acoustic quality metric measuring:
 - [x] Amplitude
@@ -25,26 +25,34 @@ Acoustic quality metric measuring:
 ## General:
 - rgeobark.m
   - Converts a signal's phase to the default bark scale
+  - This will be phased out and completely replaced with rgeobarkranged in future code
 - rgeobarkranged.m
   - Converts a signal's phase to the bark scale with specific range
 - rlogbark.m
   - Converts a signal's magnitude to the default bark scale
+  - This will be phased out and completely replaced with rlogbarkranged in future code
 - rlogbarkranged.m
   - Converts a signal's magnitude to the bark scale with specific range
 
 ## Inverse Filter:
 - alpaToSigma.m
-  - Calculates sigma value for inverse filter transfer function
+  - Calculates sigma value for inverse filter warped IIR transfer function
 - barkwarp.m
+  - Calculates lambda value based on sampling frequency
 - bose_qc20_ir.mat
+  - Impulse response of the Bose QC20 headphones
 - boseironly.m
+  - Creates warped FIR and warped IIR inverse filters for the Bose QC20 headphones impulse response
 - if_demo.m
-- **inverseFilter.m**
+  - Code for testing and demonstrating different inverse filters and functions
+- inverseFilter.m
+  - Function for finding minimum phase and all-pass inverse filter components in the frequency domain
 - warpedFIR.m
-  - Transfer function for warped finite impulse response.
+  - Applies a warped FIR filter
 - warpedIIR.m
-  - Transfer function for warped infinte impulse response.
+  - Applies a warped IIR filter
 - warpImpulseResponse.m
+  - Warps the impulse response so that warped FIR or warped IIR filter coefficients can be found
   
 ## Harmonic Distortion:
 - AutoPeak.m
