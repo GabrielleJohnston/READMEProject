@@ -1,5 +1,5 @@
 # Digital Signal Processing Applications in Hearing Aids
-## Elimination of the hearing aid’s transducer effectson the emitted signal
+## Elimination of the hearing aid transducer's effects on the emitted signal
 This is a 3rd year bioengineering project at Imperial College London that is researching into the psychoacoustic effects of distortion induced by transducers. We explore how a transducer can affect the amplitude, phase, group delay and induce new frequencies into an input signal. We determine the psychoacoustic perception of these effects and quantify them using novel Acoustic Quality Metrics. Finaly, we aim to remove all the effects of a transducer by creating an inverse filter.
 
 # Goals
