@@ -20,6 +20,7 @@ Acoustic quality metric measuring:
 - [ ] Harmonic Distortion
 - [ ] Interharmonic Distortion
 - [ ] Phase Distortion
+- [ ] Overall metric for the signal
 
 # Files in repository are grouped as follows:
 ## General:
@@ -27,12 +28,12 @@ Acoustic quality metric measuring:
   - Converts a signal's phase to the default bark scale
   - This will be phased out and completely replaced with rgeobarkranged in future code
 - rgeobarkranged.m
-  - Converts a signal's phase to the bark scale with specific range
+  - Converts a signal's phase to the bark scale with specific ranges: Human hearing, high-fidelity and high-resolution.
 - rlogbark.m
   - Converts a signal's magnitude to the default bark scale
   - This will be phased out and completely replaced with rlogbarkranged in future code
 - rlogbarkranged.m
-  - Converts a signal's magnitude to the bark scale with specific range
+  - Converts a signal's magnitude to the bark scale with the specific ranges: Human hearing, high-fidelity and high-resolution.
 
 ## Inverse Filter:
 - alpaToSigma.m
