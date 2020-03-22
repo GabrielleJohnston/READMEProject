@@ -86,7 +86,7 @@ Acoustic quality metric measuring:
 
 # The Team
 ## Supervisors:
-- [Dr Guy-Bart Stan](https://www.imperial.ac.uk/people/g.stan "Imperial College Profile")
+- [Prof Guy-Bart Stan](https://www.imperial.ac.uk/people/g.stan "Imperial College Profile")
 - [Mr Christophe Hermans](https://www.resolution-acoustics.be/our-team/christophe-hermans/ "Resolution Acoustics Profile")
 
 ## Group Members:
