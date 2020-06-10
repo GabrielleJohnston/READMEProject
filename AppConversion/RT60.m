@@ -622,16 +622,19 @@ if not (file == 0)
                         set(gca, 'XScale', 'log');
                         ylabel('Reverberation Time (s)')
                         xlabel('Filtered Signal Bands (Hz)')
+                        legend('EDT', 'T20', 'T30');
 
                         grid on
                         grid minor 
+                        
+                        file = evalin('base','IR_file');
 
                           if (size(x,2) == 1)
-                              title('RT60');
+                              title(['RT60 for ', file]);
                            elseif (i == 1)      %outermost loop is for left channel, then right channel if stereo - IS THIS WRONG?
-                              title('RT60 Left Channel');
+                              title(['RT60 Left Channel for ', file]);
                            else
-                              title('RT60 Right Channel');
+                              title(['RT60 Right Channel for ', file]);
                           end 
 
 

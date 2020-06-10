@@ -137,11 +137,11 @@ if not (file == 0)
         
         
        if (size(x,2) == 1)
-        title('Distortion data');
+        title(['Distortion data for file ',file]);
        elseif (j == 1)
-       title('Left channel distortion data');
+       title(['Left channel distortion data for ', file]);
        else
-       title('Right channel distortion data');
+       title(['Right channel distortion data for ', file]);
        end
        xlabel("Frequency (Hz)");
        ylabel("Amplitude (dB)");

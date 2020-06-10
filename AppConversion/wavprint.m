@@ -19,7 +19,7 @@ end
 if not (file == 0) 
    y = audioread(audio);
    fprintf('File successfully loaded.\n');
-   trashCanNot(y);
+%    trashCanNot(y); %this is for debugging
    plottime(y);
    legend(file,'Location','Best');
    Details = irinfo(audio)          %Output not suppressed, so prints checkIR.comment

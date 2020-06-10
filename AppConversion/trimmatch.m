@@ -4,7 +4,7 @@ function [ y ] = trimmatch( x )
 % This function uses trimoff.m on a 2 column vector (x), and match their
 % length by filling zeroes to the shorter column. The result is outputted as y.
 
-x1 = trimoff(x(:,1))
+x1 = trimoff(x(:,1));
 x2 = trimoff(x(:,2));
 x1len = length(x1);
 x2len = length(x2);

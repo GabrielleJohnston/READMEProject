@@ -9,7 +9,7 @@
 % signal to be analysed
 
 function [noise, noiselessSignal] = removeNoise (backgroundNoiseFile, signal, signal_fs, signalAxis)
-    bgNoise = backgroundNoiseFile;  % use for testing while there is no background noise file 
+    bgNoise = backgroundNoiseFile;  % use for testing while there is no background noise file
 %     [bgNoise, ~] = audioread(backgroundNoiseFile);
    
     noise_faxis = signal_fs*(0:length(bgNoise)-1)/length(bgNoise); %   create 
@@ -20,7 +20,7 @@ function [noise, noiselessSignal] = removeNoise (backgroundNoiseFile, signal, si
     noise = interp1(noise_faxis, noise_ft, signalAxis);     % interpolate 
 %   background noise signal to  be same length as the signal to be analysed
 
-    [noise, noiseAxis] = rlogbark(signalAxis, noise);   % filter the noise 
+    [noise, noiseAxis] = rlogbarkrangedv2(signalAxis, noise);   % filter the noise 
 %   signal
     noise = interp1(noiseAxis, noise, signalAxis);  % interpolate the 
 %   smoothed noise signal to be the same length as the signal to be

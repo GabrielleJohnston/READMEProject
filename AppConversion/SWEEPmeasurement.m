@@ -208,8 +208,9 @@ if (verbose ~= 0)
    msgbox (s, 'Information', 'custom', Data, hot(64));
 end
 
-plotspectlogf_modified(IR,fs,f1,f2, smoothing, mORs);
-legend(sprintf('%s-%dh-%dm',name,c(4),c(5)),'Location','Best');
+% plotspectlogf_modified(IR,fs,f1,f2, smoothing, mORs);
+plotspectlogf_modified(IR,fs,f1,f2, mORs);
+% legend(sprintf('%s-%dh-%dm',name,c(4),c(5)),'Location','Best');
 zoom on;
 
 

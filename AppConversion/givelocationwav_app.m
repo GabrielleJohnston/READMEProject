@@ -42,6 +42,6 @@ left = strcat(LOCATION_PATH,file_left);
 file_right = sprintf('space_right_ele%.f_ang%.f.wav',eleout,angout);
 right = strcat(LOCATION_PATH,file_right);
 
-string = "Heyyyyy"
+% string = "Heyyyyy"
 end
 
