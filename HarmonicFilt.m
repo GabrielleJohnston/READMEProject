@@ -2,7 +2,6 @@ function ft_wins_hann = HarmonicFilt(z, zfs, num_peaks, m, unsmooth_faxis)
     %% Create the Hanning windows for each harmonic
     m_ind = round(m.*zfs);
     for filt_num = [1:1:num_peaks]
-
         hann_temp = hann(m_ind(filt_num) - m_ind(filt_num + 1));
         c = zeros(m_ind(filt_num + 1), 1);
         d = zeros((length(z)-m_ind(filt_num)), 1);

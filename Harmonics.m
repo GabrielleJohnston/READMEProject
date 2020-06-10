@@ -1,11 +1,23 @@
 clear all
-close all
+% close all
 
 %% Opens audio file
+% file = 'IR2005281484044-1.wav';
 file = 'GBS_Project.wav';
+% setpath;
+% current = AppConversion;
+% cd(MEASURES_SWEEP_PATH);
+% [file,path] = uigetfile('*.wav','Select a wav file to load');
+% 
+% assignin('base','file',file);
+% file = evalin('base','file');
+% 
+% cd(path);
+
 [z,zfs]=audioread(file);
+% z = [zeros(1e5, 1); z; zeros(1e5, 1)];
 unsmooth_faxis =  zfs*(0:length(z)-1)/length(z);
-backgroundNoiseFile = z(1:3e5); %In the app this will be a seperate file that will have to be opened with audrioread. Christophe wants to record a signal to use as background noise.
+backgroundNoiseFile = z(110000:end); %In the app this will be a seperate file that will have to be opened with audrioread. Christophe wants to record a signal to use as background noise.
 %% Variables to be in the User Interface
 num_peaks = 15; %Number of harmonics to remove from the signal, this needs to be specified by the user.
 num_peaks_view = 4;%Number of harmonics to view individually
@@ -29,7 +41,7 @@ mend=round(m(end)*zfs); %Finds the last midpoint between harmonics in seconds
 %% Filter and plots harmonics
 
 ft_wins_hann = HarmonicFilt(z, zfs, num_peaks, m, unsmooth_faxis);% Function returns all the harmonics that have been windowed
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 figure;%Plots all the harmonics that is determined by user (num_peaks_view)
 for i = 1:num_peaks_view
     if i == highlight_harmonic 
@@ -50,22 +62,20 @@ if num_peaks_view_noise > num_peaks_view
     end
 end
 ft_wins_hann_noise = ft_wins_hann_noise + 10.^(noise./20);
-    ft_wins_hann_noise = 20*log10(ft_wins_hann_noise);
-    semilogx(unsmooth_faxis, ft_wins_hann_noise,'Color','#808080','LineStyle','--');
-    label(num_peaks_view+1) = "Background noise and H"+(num_peaks_view+1)+"-"+(num_peaks_view_noise);
+ft_wins_hann_noise = 20*log10(ft_wins_hann_noise);
+semilogx(unsmooth_faxis, ft_wins_hann_noise,'LineStyle','--'); %'Color','#808080',
+label(num_peaks_view+1) = "THD";
 
+%% THD
+[THD, max_THD, freq_of_max_THD, min_THD, freq_of_min_THD] = calculateTHD(noiseless_z, zfs, ft_wins_hann);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+semilogx(THD);
+label(length(label)+1)="THD (dB)";
+    
 title('Harmonics'); %Edits graph
 xlabel('Frequency (Hz)');
 ylabel('Amplitude (dB)');
 legend(label');
-xlim([15 20000]);
+xlim([15 40000]);
 grid on;
-
-%% THD
-[THD, max_THD, freq_of_max_THD, min_THD, freq_of_min_THD] = calculateTHD(noiseless_z, zfs, ft_wins_hann);
-figure;
-semilogx(THD);
-ylabel("THD (dB)"); xlabel("Frequency (Hz)");
-grid on
-xlim([15 20000]);
-title('Total harmonic distortion');
+% cd(current)
