@@ -2,8 +2,9 @@ clear all
 % close all
 
 %% Opens audio file
-% file = 'IR2005281484044-1.wav';
-file = 'GBS_Project.wav';
+% file = 'IR2005281484044-1.wav';   % New IR recorded by Marcella - doesn't work with
+% algorithm which could be due to noise?
+file = 'GBS_Project.wav';   % Original IR
 % setpath;
 % current = AppConversion;
 % cd(MEASURES_SWEEP_PATH);
@@ -15,7 +16,8 @@ file = 'GBS_Project.wav';
 % cd(path);
 
 [z,zfs]=audioread(file);
-% z = [zeros(1e5, 1); z; zeros(1e5, 1)];
+% z = [zeros(1e5, 1); z; zeros(1e7, 1)];    % padding added to check if
+% works with different length signals
 unsmooth_faxis =  zfs*(0:length(z)-1)/length(z);
 backgroundNoiseFile = z(110000:end); %In the app this will be a seperate file that will have to be opened with audrioread. Christophe wants to record a signal to use as background noise.
 %% Variables to be in the User Interface
