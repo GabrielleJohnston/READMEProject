@@ -12,9 +12,10 @@ function ThreePeaks=AutoPeak(z,zfs)
     zabs=abs(z);
 
     % slightly smooth
-    MA_coef=150;
-    MA=ones(1, MA_coef);
-    zsmooth=conv(transpose(zabs),MA,'same');
+    [zsmooth,lo] = envelope(zabs);
+%     MA_coef=150;
+%     MA=ones(1, MA_coef);
+%     zsmooth=conv(transpose(zabs),MA,'same');
 
     %remove slight background noise
     znorm=zsmooth/(max(zsmooth));
