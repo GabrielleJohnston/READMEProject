@@ -8,17 +8,13 @@ function plotspectlogf_modified(x, fs, f1, f2, mOrs, n)
 %
 
 %Defaults
-if (nargin < 7)
+if (nargin < 6)
 n = max(size(x));
 n = 2*2^nextpow2(n);
 end
 
-if (nargin < 6)
-mOrs = 'mono-left';
-end
-
 if (nargin < 5)
-smoothing = 'bark';
+mOrs = 'mono-left';
 end
 
 if (nargin < 4)
