@@ -1,5 +1,6 @@
 % Calculated the True Octave smooth of a signal
 % Input: amp (signal), f (frequency)
+% frequency range: 15.8 Hz - 31,623 Hz
 function [filt_sig,fcenter] = trueOctave(amp, f)
 
     fcenter = (10.^(0.3*[4:15]));

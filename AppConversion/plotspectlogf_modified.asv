@@ -127,14 +127,14 @@ end
      assignin('base','freq',freq);
      assignin('base','group_delay_left',group_delay_left);
      assignin('base','freq_bark',freq_bark);
-     assignin('base', 'fcenter10', fcenter10);
-     assignin('base', 'trueOct_f', trueOct_f);
      assignin('base','group_delay_bark_left',group_delay_bark_left);
      assignin('base','myphase_left',myphase_left);
      assignin('base','phase_bark_left',phase_bark_left);
      assignin('base','db_left',db_left);
      assignin('base','mag_bark_left',mag_bark_left);
      assignin('base', 'k10_left', k10_left);
+     assignin('base', 'fcenter10', fcenter10);
+     assignin('base', 'trueOct_f', trueOct_f);
      assignin('base', 'trueOct_left', trueOct_left);
      
      assignin('base','mOrs',mOrs);
@@ -143,14 +143,14 @@ end
      assignin('base','freq',freq);
      assignin('base','group_delay_right',group_delay_right);
      assignin('base','freq_bark',freq_bark);
-     assignin('base', 'fcenter10', fcenter10);
-     assignin('base', 'trueOct_f', trueOct_f);
      assignin('base','group_delay_bark_right',group_delay_bark_right);
      assignin('base','myphase_right',myphase_right);
      assignin('base','phase_bark_right',phase_bark_right);
      assignin('base','db_right',db_right);
      assignin('base','mag_bark_right',mag_bark_right);
      assignin('base', 'k10_right', k10_right);
+     assignin('base', 'fcenter10', fcenter10);
+     assignin('base', 'trueOct_f', trueOct_f);
      assignin('base', 'trueOct_right', trueOct_right);
      
      assignin('base','mOrs',mOrs);
@@ -158,7 +158,6 @@ end
      assignin('base','freq',freq);
      assignin('base', 'trueOct_f', trueOct_f);
      assignin('base','freq_bark',freq_bark);
-     assignin('base', 'fcenter10', fcenter10);
      
      assignin('base','group_delay_left',group_delay_left);
      assignin('base','group_delay_bark_left',group_delay_bark_left);
@@ -167,7 +166,6 @@ end
      assignin('base','db_left',db_left);
      assignin('base','mag_bark_left',mag_bark_left);
      assignin('base', 'trueOct_left', trueOct_left);
-     assignin('base', 'k10_left', k10_left);
      
      assignin('base','mOrs',mOrs);
      
@@ -178,7 +176,10 @@ end
      assignin('base','db_right',db_right);
      assignin('base','mag_bark_right',mag_bark_right);
      assignin('base', 'trueOct_right', trueOct_right);
-     assignin('base', 'k10_right', k10_right);
+     
+     assignin('base', 'k10_left', k10);
+     assignin('base', 'k10_right', k10);
+     assignin('base', 'fcenter10', fcenter10);
  end
 
  if strcmp(mOrs,'stereo')
