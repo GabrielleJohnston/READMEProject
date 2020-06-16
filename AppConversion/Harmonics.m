@@ -71,7 +71,7 @@ function Harmonics(callmode)
 
         if strcmpi(callmode,'main')
             hold on
-            figure;%Plots all the harmonics that is determined by user (num_peaks_view)
+            figure(1);%Plots all the harmonics that is determined by user (num_peaks_view)
             for i = 1:num_peaks_view
                 if i == highlight_harmonic 
                     semilogx(unsmooth_faxis, ft_wins_hann{i},'LineWidth',1.5); %This plots the Emphasised harmonic
