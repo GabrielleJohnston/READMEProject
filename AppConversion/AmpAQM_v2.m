@@ -1,4 +1,5 @@
-function metric = AmpAQM1(measuredSignalinWav, measuredSignalinMat,app_db,freq)  
+% function metric = AmpAQM_v2(measuredSignalinWav, measuredSignalinMat,app_db,freq)
+function metric = AmpAQM_v2(app_db,freq)  
     %If the measured signal is in a .wav format, leave measuredSignalMat as
     %0. 
     %If the measured signal is in a .mat format, leave measuredSignalinWav 
