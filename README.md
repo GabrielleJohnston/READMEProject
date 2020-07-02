@@ -2,26 +2,6 @@
 ## Elimination of the hearing aid transducer's effects on the emitted signal
 This is a 3rd year bioengineering project at Imperial College London that is researching into the psychoacoustic effects of distortion induced by transducers. We explore how a transducer can affect the amplitude, phase, group delay and induce new frequencies into an input signal. We determine the psychoacoustic perception of these effects and quantify them using novel Acoustic Quality Metrics. Finaly, we aim to remove all the effects of a transducer by creating an inverse filter.
 
-# Goals
-General:
-- [x] MATLAB GUIDE code converted to MATLAB App Designer
-- [x] Psychoacoustical testing of inverse filter
-
-Inverse filter using:
-- [x] Warped FIR filtering
-- [x] Warped IIR filtering
-- [ ] FIR filtering
-- [ ] IIR filtering
-
-Acoustic quality metric measuring:
-- [x] Amplitude
-- [ ] Amplitude in high frequency ranges
-- [x] Group Delay
-- [ ] Harmonic Distortion
-- [ ] Interharmonic Distortion
-- [ ] Phase Distortion
-- [ ] Overall metric for the signal
-
 # Files in repository are grouped as follows:
 ## General:
 - rlogbarkrangedv2.m
@@ -54,7 +34,7 @@ Acoustic quality metric measuring:
   - Finds the inverse filter in the time domain method using the method in [http://www.aes.org/e-lib/browse.cfm?elib=12098](http://www.aes.org/e-lib/browse.cfm?elib=12098). 
  - if_test.m
   - Example file for finding inverse filter with all methods
-  - Uses impulse response provided at start of project
+  - Uses impulse response provided at start of project (IR19061314201696-1.wav)
 - warpedFIR.m
   - Applies a warped FIR filter
 - warpedIIR.m
