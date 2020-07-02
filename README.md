@@ -33,21 +33,28 @@ Acoustic quality metric measuring:
   - Calculates the geometric mean at certain points given by the bark scale over a rectangular window with a frequency dependent width
   - Outputs the points and the frequency spacing of the points
   - The ouput frequency range can be optionally specified
-  - *Note:* this function replaces rlogbark.m and rlogbarkranged.m. If any files exist using either of these functions please replace them with this function. 
+  - *Note:* this function replaces rgeobark.m and rgeobarkranged.m. If any files exist using either of these functions please replace them with this function. 
 
 ## Inverse Filter:
 - alpaToSigma.m
   - Calculates sigma value for inverse filter warped IIR transfer function
+- ampegif.m
+  - Example file for finding inverse filter with all methods
+  - See [https://soundwoofer.com/Library/Index](https://soundwoofer.com/Library/Index) for impulse response used (freely available). 
+- ashdownif.m
+  - Example file for finding inverse filter with all methods
+  - See [https://soundwoofer.com/Library/Index](https://soundwoofer.com/Library/Index) for impulse response used (freely available). 
 - barkwarp.m
   - Calculates lambda value based on sampling frequency
-- bose_qc20_ir.mat
-  - Impulse response of the Bose QC20 headphones
-- boseironly.m
-  - Creates warped FIR and warped IIR inverse filters for the Bose QC20 headphones impulse response
-- **if_demo.m**
-  - Code for testing and demonstrating different inverse filters and functions
 - inverseFilter.m
   - Function for finding minimum phase and all-pass inverse filter components in the frequency domain
+- inverseFilterv3.m
+  - *New* version of function for finding minimum phase and all-pass inverse filter components in the frequency domain
+- inverseFilterTime.m 
+  - Finds the inverse filter in the time domain method using the method in [http://www.aes.org/e-lib/browse.cfm?elib=12098](http://www.aes.org/e-lib/browse.cfm?elib=12098). 
+ - if_test.m
+  - Example file for finding inverse filter with all methods
+  - Uses impulse response provided at start of project
 - warpedFIR.m
   - Applies a warped FIR filter
 - warpedIIR.m
