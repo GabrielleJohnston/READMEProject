@@ -24,16 +24,16 @@ Acoustic quality metric measuring:
 
 # Files in repository are grouped as follows:
 ## General:
-- rgeobark.m
-  - Converts a signal's phase to the default bark scale
-  - This will be phased out and completely replaced with rgeobarkranged in future code
-- rgeobarkranged.m
-  - Converts a signal's phase to the bark scale with specific ranges: Human hearing, high-fidelity and high-resolution.
-- rlogbark.m
-  - Converts a signal's magnitude to the default bark scale
-  - This will be phased out and completely replaced with rlogbarkranged in future code
-- rlogbarkranged.m
-  - Converts a signal's magnitude to the bark scale with the specific ranges: Human hearing, high-fidelity and high-resolution.
+- rlogbarkrangedv2.m
+  - Calculates the log mean at certain points given by the bark scale over a rectangular window with a frequency dependent width
+  - Outputs the points and the frequency spacing of the points
+  - The ouput frequency range can be optionally specified
+  - *Note:* this function replaces rlogbark.m and rlogbarkranged.m. If any files exist using either of these functions please replace them with this function. 
+- rgeobarkrangedv2.m
+  - Calculates the geometric mean at certain points given by the bark scale over a rectangular window with a frequency dependent width
+  - Outputs the points and the frequency spacing of the points
+  - The ouput frequency range can be optionally specified
+  - *Note:* this function replaces rlogbark.m and rlogbarkranged.m. If any files exist using either of these functions please replace them with this function. 
 
 ## Inverse Filter:
 - alpaToSigma.m
