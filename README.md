@@ -32,7 +32,7 @@ This is a 3rd year bioengineering project at Imperial College London that is res
   - *New* version of function for finding minimum phase and all-pass inverse filter components in the frequency domain
 - inverseFilterTime.m 
   - Finds the inverse filter in the time domain method using the method in [http://www.aes.org/e-lib/browse.cfm?elib=12098](http://www.aes.org/e-lib/browse.cfm?elib=12098). 
- - if_test.m
+- if_test.m
   - Example file for finding inverse filter with all methods
   - Uses impulse response provided at start of project (IR19061314201696-1.wav)
 - warpedFIR.m
